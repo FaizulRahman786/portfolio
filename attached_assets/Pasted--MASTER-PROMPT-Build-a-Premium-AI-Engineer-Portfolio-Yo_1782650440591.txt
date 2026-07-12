@@ -1,0 +1,470 @@
+# MASTER PROMPT — Build a Premium AI Engineer Portfolio
+
+You are an award-winning Senior UI/UX Designer, Product Designer, Frontend Architect, Motion Designer, Accessibility Expert, and Performance Engineer.
+
+Your task is to build a world-class portfolio for **Faizul Rahman**.
+
+This is not a template website.
+
+It must look like a premium SaaS product and communicate that I am a future AI Engineer, Machine Learning Engineer, and Full Stack Developer.
+
+---
+
+## Objective
+
+Design a portfolio that immediately convinces recruiters that I am a serious software engineer capable of building production-grade products.
+
+The website should feel comparable to modern products from Stripe, Linear, Vercel, Framer, OpenAI, or Anthropic.
+
+Every section must have purpose.
+
+Every interaction must feel intentional.
+
+---
+
+## Technology
+
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* Framer Motion
+* React Router
+* Lucide Icons
+* GSAP (only where beneficial)
+* Three.js (subtle usage only)
+* Lenis smooth scrolling
+* React Hook Form
+* shadcn/ui components
+
+Optimize for Lighthouse scores above 95.
+
+---
+
+# Design Language
+
+Theme:
+
+Dark luxury with gold accents.
+
+Background:
+
+Near black.
+
+Accent:
+
+Soft gold.
+
+Cards:
+
+Frosted glass with subtle blur.
+
+Corners:
+
+Large rounded corners.
+
+Spacing:
+
+Generous whitespace.
+
+Typography:
+
+Modern geometric fonts with excellent readability.
+
+No clutter.
+
+No generic gradients.
+
+No template appearance.
+
+---
+
+# Home Section
+
+Large hero.
+
+Professional photograph.
+
+Animated introduction.
+
+Name:
+
+Faizul Rahman
+
+Headline:
+
+AI Engineer • Machine Learning Enthusiast • Full Stack Developer
+
+Short introduction describing passion for solving real-world problems through AI and software engineering.
+
+Primary buttons:
+
+View Projects
+
+Download Resume
+
+Contact Me
+
+Background:
+
+Animated particles.
+
+Subtle neural-network animation.
+
+Smooth entrance animations.
+
+---
+
+# About Section
+
+Professional biography.
+
+Education timeline.
+
+Current degree:
+
+B.Tech Computer Science & Engineering (AI & ML)
+
+Lovely Professional University
+
+CGPA:
+
+8.3
+
+Show learning philosophy.
+
+Show career goals.
+
+Show strengths.
+
+---
+
+# Skills Section
+
+Animated skill cards.
+
+Categories:
+
+Programming
+
+* Python
+* JavaScript
+* TypeScript
+* C
+* HTML
+* CSS
+
+Frameworks
+
+* React
+* Node.js
+* Express
+* Django
+* Bootstrap
+
+Databases
+
+* PostgreSQL
+* MongoDB
+* Firebase
+* Supabase
+* NeonDB
+
+Tools
+
+* Git
+* GitHub
+* Vite
+* Cloudinary
+* Vercel
+* Render
+
+Display proficiency using elegant progress bars.
+
+---
+
+# Projects Section
+
+Create premium project cards.
+
+Include large screenshots.
+
+Hover animations.
+
+Technology badges.
+
+Problem.
+
+Solution.
+
+Features.
+
+Architecture.
+
+Challenges.
+
+Lessons learned.
+
+Projects:
+
+1. Anamika Sweets SaaS
+
+Modern SaaS platform for restaurants and sweet shops.
+
+Admin dashboard.
+
+Authentication.
+
+Order management.
+
+Cloud storage.
+
+Responsive design.
+
+2. Kainnat Art Jewellery
+
+Premium jewellery website.
+
+Luxury UI.
+
+Product showcase.
+
+Modern shopping experience.
+
+Responsive design.
+
+3. Face Recognition System
+
+Python-based AI application.
+
+Computer Vision.
+
+Face Detection.
+
+Recognition pipeline.
+
+Machine Learning concepts.
+
+Each project should have:
+
+Live Demo
+
+GitHub Repository
+
+Case Study
+
+---
+
+# Experience
+
+Prepare the section so internships, freelance work, research, or open-source contributions can be added later without redesigning the site.
+
+---
+
+# Achievements
+
+Timeline layout.
+
+Hackathons.
+
+Certifications.
+
+Coding competitions.
+
+Awards.
+
+GitHub milestones.
+
+---
+
+# Education
+
+Interactive timeline.
+
+Modern cards.
+
+Hover effects.
+
+---
+
+# Contact
+
+Professional contact form.
+
+Social icons.
+
+GitHub.
+
+LinkedIn.
+
+Email.
+
+Location.
+
+Resume download.
+
+---
+
+# Footer
+
+Minimal.
+
+Professional.
+
+Elegant.
+
+---
+
+# Motion Design
+
+Page transitions.
+
+Scroll-triggered animations.
+
+Micro interactions.
+
+Hover animations.
+
+Smooth card lifting.
+
+Magnetic buttons.
+
+Animated cursor glow.
+
+Parallax effects.
+
+No excessive motion.
+
+---
+
+# Accessibility
+
+Keyboard navigation.
+
+Visible focus states.
+
+ARIA labels.
+
+Semantic HTML.
+
+WCAG AA compliance.
+
+---
+
+# Performance
+
+Lazy load images.
+
+Code splitting.
+
+Image optimization.
+
+Tree shaking.
+
+Lighthouse:
+
+Performance >95
+
+Accessibility >100
+
+Best Practices >100
+
+SEO >100
+
+---
+
+# SEO
+
+Structured data.
+
+Open Graph.
+
+Twitter cards.
+
+Meta tags.
+
+Dynamic page titles.
+
+robots.txt
+
+sitemap.xml
+
+---
+
+# Mobile Experience
+
+Fully responsive.
+
+Touch-friendly.
+
+Adaptive navigation.
+
+Smooth scrolling.
+
+Bottom navigation for mobile.
+
+---
+
+# Extra Premium Features
+
+Command Palette (Ctrl + K)
+
+Light/Dark mode toggle
+
+Interactive timeline
+
+Animated statistics
+
+GitHub contribution visualization
+
+Visitor counter
+
+Blog section (ready for future)
+
+Resume viewer
+
+Project filtering
+
+Search
+
+Testimonials section (placeholder)
+
+Terminal-style "About Me"
+
+AI-inspired loading animation
+
+Typing effect
+
+Scroll progress indicator
+
+Back-to-top button
+
+Custom 404 page
+
+Offline-ready PWA
+
+---
+
+# Code Quality
+
+Use reusable components.
+
+Feature-based folder structure.
+
+TypeScript best practices.
+
+ESLint.
+
+Prettier.
+
+No duplicated code.
+
+No inline styles.
+
+Clean architecture.
+
+Production-ready.
+
+---
+
+The final portfolio should look like a premium software product rather than a student portfolio. Every interaction, animation, and section should reinforce professionalism, technical depth, and a strong interest in AI, Machine Learning, and scalable software engineering.

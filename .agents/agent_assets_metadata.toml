@@ -1,0 +1,20 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "WoTifPS7oPRUp1gTS_mhP"
+uri = "file://attached_assets/anamika-sweets.png"
+type = "image"
+title = "restaurant dashboard UI"
+
+[[generated]]
+id = "qDXRAsfHGeYTzazixyXZ7"
+uri = "file://attached_assets/kainnat-art.png"
+type = "image"
+title = "premium jewellery website"
+
+[[generated]]
+id = "sRnqNz11dIUYxgM_p4zwL"
+uri = "file://attached_assets/face-recognition.png"
+type = "image"
+title = "AI face recognition visualization"
