@@ -24,9 +24,9 @@ const sections = [
 ];
 
 const links = [
-  { label: "GitHub", href: "https://github.com/faizulrahman", icon: Github },
-  { label: "LinkedIn", href: "https://linkedin.com/in/faizulrahman", icon: Linkedin },
-  { label: "Email", href: "mailto:faizul@example.com", icon: Mail },
+  { label: "GitHub", href: "https://github.com/FaizulRahman786", icon: Github },
+  { label: "LinkedIn", href: "https://linkedin.com/in/faizul-rahman-87974b397", icon: Linkedin },
+  { label: "Email", href: "mailto:rahmanadnan412@gmail.com", icon: Mail },
 ];
 
 interface CommandPaletteProps {

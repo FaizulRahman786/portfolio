@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -15,7 +15,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
@@ -72,8 +72,8 @@ export function Contact() {
               <h3 className="font-bold text-lg mb-4">Contact info</h3>
               <div className="space-y-4">
                 {[
-                  { icon: Mail, label: "Email", value: "faizul@example.com", href: "mailto:faizul@example.com" },
-                  { icon: MapPin, label: "Location", value: "Punjab, India", href: null },
+                  { icon: Mail, label: "Email", value: "rahmanadnan412@gmail.com", href: "mailto:rahmanadnan412@gmail.com" },
+                  { icon: MapPin, label: "Location", value: "Bihar, India", href: null },
                 ].map(({ icon: Icon, label, value, href }) => (
                   <div key={label} className="flex items-center gap-3" data-testid={`contact-info-${label.toLowerCase()}`}>
                     <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -96,9 +96,9 @@ export function Contact() {
               <h3 className="font-bold text-sm text-muted-foreground uppercase tracking-widest mb-3">Socials</h3>
               <div className="flex gap-3">
                 {[
-                  { icon: Github, href: "https://github.com/faizulrahman", label: "GitHub" },
-                  { icon: Linkedin, href: "https://linkedin.com/in/faizulrahman", label: "LinkedIn" },
-                  { icon: Mail, href: "mailto:faizul@example.com", label: "Email" },
+                  { icon: Github, href: "https://github.com/FaizulRahman786", label: "GitHub" },
+                  { icon: Linkedin, href: "https://linkedin.com/in/faizul-rahman-87974b397", label: "LinkedIn" },
+                  { icon: Mail, href: "mailto:rahmanadnan412@gmail.com", label: "Email" },
                 ].map(({ icon: Icon, href, label }) => (
                   <motion.a
                     key={label}
@@ -128,7 +128,7 @@ export function Contact() {
               </div>
               <div>
                 <div className="text-sm font-semibold">Download Resume</div>
-                <div className="text-xs text-muted-foreground">PDF · Updated 2024</div>
+                <div className="text-xs text-muted-foreground">PDF · Updated 2026</div>
               </div>
             </motion.a>
 
@@ -138,7 +138,7 @@ export function Contact() {
                 <span className="text-xs font-semibold text-green-400">Available for work</span>
               </div>
               <p className="text-xs text-muted-foreground">
-                Open to internships, freelance, and full-time opportunities in AI/ML and Full Stack development.
+                Open to freelance projects and full-time opportunities in Full Stack &amp; AI/ML development.
               </p>
             </div>
           </motion.div>

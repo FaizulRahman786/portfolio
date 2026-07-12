@@ -1,31 +1,31 @@
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Trophy, Award, Code, Star, GitBranch } from "lucide-react";
+import { motion, useInView, type Variants } from "framer-motion";
+import { Rocket, Briefcase, Brain, GitBranch, TrendingUp } from "lucide-react";
 
 const achievements = [
   {
-    icon: Code,
-    category: "Hackathon",
-    title: "Smart India Hackathon Participant",
-    description: "Participated in India's largest hackathon — developed an AI-powered solution for government challenges.",
-    date: "2024",
-    color: "text-amber-400",
-    bg: "bg-amber-400/10",
+    icon: Rocket,
+    category: "SaaS",
+    title: "Production-Ready SaaS Platforms",
+    description: "Shipped multiple full-stack SaaS platforms — including MB Career Connect and Anamika SaaS — from architecture through cloud deployment.",
+    date: "2025–present",
+    color: "text-primary",
+    bg: "bg-primary/10",
   },
   {
-    icon: Award,
-    category: "Certification",
-    title: "Python for Data Science & AI",
-    description: "Certified by IBM via Coursera — covering data analysis, machine learning fundamentals, and real-world AI applications.",
-    date: "2024",
+    icon: Briefcase,
+    category: "Freelance",
+    title: "Real Business Solutions Delivered",
+    description: "Built and deployed production websites and platforms for real clients across restaurants, jewellery, and career services.",
+    date: "Aug 2025–present",
     color: "text-blue-400",
     bg: "bg-blue-400/10",
   },
   {
-    icon: Star,
-    category: "Academic",
-    title: "Dean's Academic Excellence",
-    description: "Recognized for maintaining a CGPA of 8.3 across all semesters in the competitive AI & ML engineering program.",
+    icon: Brain,
+    category: "AI & ML",
+    title: "Continuous AI Learning",
+    description: "Pursuing B.Tech CSE (AI & ML) at Lovely Professional University while applying AI concepts to production systems.",
     date: "2022–present",
     color: "text-purple-400",
     bg: "bg-purple-400/10",
@@ -33,24 +33,24 @@ const achievements = [
   {
     icon: GitBranch,
     category: "Open Source",
-    title: "GitHub Milestone: 100+ Commits",
-    description: "Consistent open-source contributor with repositories spanning AI systems, web apps, and utility tooling.",
+    title: "Active GitHub Contributor",
+    description: "Maintains public repositories spanning SaaS platforms, e-commerce, and utility tooling on GitHub.",
     date: "2023–present",
     color: "text-green-400",
     bg: "bg-green-400/10",
   },
   {
-    icon: Trophy,
-    category: "Competition",
-    title: "Coding Contest — LeetCode",
-    description: "Active competitive programmer on LeetCode, solving data structures and algorithm problems across difficulty levels.",
+    icon: TrendingUp,
+    category: "Growth",
+    title: "Continuous Improvement",
+    description: "Consistently iterating on architecture, performance, and UX across every shipped project.",
     date: "Ongoing",
     color: "text-cyan-400",
     bg: "bg-cyan-400/10",
   },
 ];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };

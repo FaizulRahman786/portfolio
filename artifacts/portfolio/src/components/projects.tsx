@@ -1,76 +1,111 @@
 import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, ArrowRight, X, Layers, Cpu, ShoppingBag } from "lucide-react";
+import { motion, useInView, AnimatePresence, type Variants } from "framer-motion";
+import { ExternalLink, Github, ArrowRight, X, Users, ShoppingBag, Gem, Pizza, Star } from "lucide-react";
+import mbCareerConnectImg from "@assets/project-mb-career-connect.png";
+import anamikaSaasImg from "@assets/project-anamika-saas.png";
+import kainnatJewelleryImg from "@assets/project-kainnat-jewellery.png";
+import pizzeriaTownImg from "@assets/project-pizzeria-town.png";
 
 const projects = [
   {
-    id: "anamika-sweets",
-    title: "Anamika Sweets SaaS",
-    tagline: "Modern SaaS platform for restaurants & sweet shops",
+    id: "mb-career-connect",
+    title: "MB Career Connect",
+    tagline: "Career development SaaS platform",
+    flagship: true,
+    status: "Ongoing",
+    image: mbCareerConnectImg,
+    icon: Users,
+    color: "from-primary/25 to-primary/5",
+    border: "hover:border-primary/50",
+    accentColor: "text-primary",
+    tags: ["React", "TypeScript", "Node.js", "Firebase", "Firestore", "Cloudinary", "Cloudflare", "Razorpay", "Express"],
+    problem: "Students, mentors, recruiters, and alumni operate in disconnected systems — making career guidance, mentorship, and hiring slow and fragmented.",
+    solution: "Built a unified role-based SaaS ecosystem connecting students, mentors, recruiters, and alumni through career guidance, mentorship, a job portal, scholarships, and event management.",
+    features: [
+      "Career guidance and mentorship matching",
+      "Job and internship portal with employer dashboards",
+      "Scholarship discovery and alumni network",
+      "Hackathon and event management",
+      "Integrated payments via Razorpay",
+      "Role-based dashboards with secure authentication",
+    ],
+    architecture: "React + TypeScript frontend, Express REST API, Firebase/Firestore for data and auth, Cloudinary for media, Cloudflare for delivery, Razorpay for payments.",
+    lessons: "Designing a role-based permission model up front made every subsequent feature — payments, dashboards, mentorship — far easier to compose safely.",
+    demo: "https://mb-career-connect.vercel.app",
+    github: "https://github.com/FaizulRahman786/mb-carrer-connection.git",
+  },
+  {
+    id: "anamika-saas",
+    title: "Anamika SaaS",
+    tagline: "Restaurant & sweet shop SaaS platform",
+    status: "Live",
+    image: anamikaSaasImg,
     icon: ShoppingBag,
     color: "from-amber-500/20 to-orange-500/10",
     border: "hover:border-amber-500/40",
     accentColor: "text-amber-400",
-    tags: ["React", "Node.js", "PostgreSQL", "Cloudinary", "Express", "JWT"],
-    problem: "Restaurant and sweet shop owners struggle with manual order management, leading to errors, slow service, and poor customer experience.",
-    solution: "Built a comprehensive SaaS platform with real-time order management, cloud-based media storage, and a polished admin dashboard that any shop owner can operate.",
+    tags: ["React", "TypeScript", "Node.js", "Firebase", "Cloudinary", "Cloudflare", "Clerk"],
+    problem: "Restaurant and sweet shop owners struggle with manual order, reservation, and review management, leading to errors and poor customer experience.",
+    solution: "Built a multi-tenant SaaS platform with a dynamic admin dashboard, table booking, review and gallery management, and role-based access control.",
     features: [
-      "Secure authentication with JWT + refresh tokens",
-      "Real-time order tracking and management dashboard",
-      "Cloudinary integration for optimized product images",
-      "Responsive design for mobile POS use",
-      "Role-based access control for staff and admin",
+      "Restaurant management with admin dashboard",
+      "Role-based access control for staff and owners",
+      "Table booking and reservation system",
+      "Clerk-based authentication",
+      "SEO-optimized, fully responsive UI",
     ],
-    architecture: "React frontend with Express REST API, PostgreSQL database, and Cloudinary CDN for media assets. JWT-based auth with refresh token rotation.",
-    lessons: "Learned the importance of role-based access design upfront and how Cloudinary upload presets dramatically simplify media workflows.",
-    demo: "#",
-    github: "https://github.com/faizulrahman",
+    architecture: "React + TypeScript frontend, Node.js backend, Firebase for data, Cloudinary for media, Cloudflare for delivery, Clerk for authentication.",
+    lessons: "Multi-tenant data isolation needs to be designed at the schema level from day one — retrofitting it later is expensive.",
+    demo: "https://restaurantadvitisment.vercel.app",
+    github: "https://github.com/FaizulRahman786/restaurantadvitisment",
   },
   {
     id: "kainnat-jewellery",
-    title: "Kainnat Art Jewellery",
-    tagline: "Premium luxury jewellery e-commerce experience",
-    icon: Layers,
+    title: "Jewellery Shop Website",
+    tagline: "Modern jewellery business website",
+    status: "Live",
+    image: kainnatJewelleryImg,
+    icon: Gem,
     color: "from-purple-500/20 to-pink-500/10",
     border: "hover:border-purple-500/40",
     accentColor: "text-purple-400",
-    tags: ["React", "CSS3", "JavaScript", "Responsive Design", "Animation"],
+    tags: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Cloudinary", "Clerk"],
     problem: "High-end jewellery brands lack websites that match the premium feel of their products — most look like generic e-commerce templates.",
-    solution: "Crafted a bespoke luxury showcase site with cinematic product presentations, smooth animations, and a shopping experience that feels as premium as the jewellery itself.",
+    solution: "Crafted a bespoke luxury showcase site with cinematic product presentations, a full product catalog backed by MongoDB, and secure authentication.",
     features: [
-      "Cinematic product showcase with parallax effects",
-      "Custom animations and micro-interactions",
-      "Mobile-first responsive layout with touch gestures",
-      "Optimized images with lazy loading for performance",
-      "Premium typography and refined whitespace design",
+      "Cinematic product showcase with premium typography",
+      "MongoDB-backed product catalog",
+      "Clerk authentication for accounts and checkout",
+      "Cloudinary-optimized product imagery",
+      "Fully responsive, mobile-first layout",
     ],
-    architecture: "Pure React with CSS custom animations, no heavy libraries. Lighthouse score above 95 for performance and accessibility.",
-    lessons: "Less is more in luxury design — every element must earn its place. Performance is part of the luxury experience.",
-    demo: "#",
-    github: "https://github.com/faizulrahman",
+    architecture: "React + TypeScript frontend, Express REST API, MongoDB for product data, Cloudinary CDN for media, Clerk for authentication.",
+    lessons: "Less is more in luxury design — every element must earn its place, and performance is part of the premium experience.",
+    demo: "https://faizul.vercel.app",
+    github: "https://github.com/FaizulRahman786/jewellary-shop",
   },
   {
-    id: "face-recognition",
-    title: "Face Recognition System",
-    tagline: "Python AI application with computer vision pipeline",
-    icon: Cpu,
+    id: "pizzeria-town",
+    title: "Pizzeria Town",
+    tagline: "Restaurant landing page",
+    status: "Live",
+    image: pizzeriaTownImg,
+    icon: Pizza,
     color: "from-cyan-500/20 to-blue-500/10",
     border: "hover:border-cyan-500/40",
     accentColor: "text-cyan-400",
-    tags: ["Python", "OpenCV", "face_recognition", "NumPy", "Machine Learning"],
-    problem: "Manual attendance systems are error-prone and time-consuming — the need for automated identity verification is growing rapidly.",
-    solution: "Built a real-time face detection and recognition pipeline using deep learning embeddings that identifies individuals with high accuracy from a live camera feed.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    problem: "Small restaurants often need a fast, attractive landing page without the overhead of a full web application.",
+    solution: "Built a lightweight, fast-loading restaurant landing page with menu highlights and a reservation call-to-action, using only vanilla web technologies.",
     features: [
-      "Real-time face detection from webcam or video stream",
-      "128-dimensional face embedding comparison",
-      "Multi-face simultaneous recognition",
-      "Confidence scoring with threshold tuning",
-      "Enrollment pipeline for adding new identities",
+      "Menu highlights and reservation CTA",
+      "Fully responsive, dependency-free layout",
+      "Fast load times with vanilla HTML/CSS/JS",
     ],
-    architecture: "OpenCV for video capture and preprocessing, face_recognition (dlib) for 128-d embeddings, NumPy for vector distance computation.",
-    lessons: "Understanding the full ML pipeline — data collection, preprocessing, embedding, and inference — is more valuable than any individual library.",
-    demo: "#",
-    github: "https://github.com/faizulrahman",
+    architecture: "Static HTML/CSS/JavaScript site, no framework overhead, optimized for fast first paint.",
+    lessons: "Sometimes the right tool is the simplest one — vanilla JS delivers instant load times for content-first sites.",
+    demo: "https://pizzeriatown.vercel.app",
+    github: "https://github.com/FaizulRahman786/pizzariya",
   },
 ];
 
@@ -176,7 +211,7 @@ function ProjectModal({ project, onClose }: { project: typeof projects[0]; onClo
   );
 }
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
@@ -206,7 +241,7 @@ export function Projects() {
           </motion.p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((project, i) => {
             const Icon = project.icon;
             return (
@@ -214,16 +249,34 @@ export function Projects() {
                 key={project.id}
                 initial={{ opacity: 0, y: 40 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
+                transition={{ duration: 0.6, delay: 0.2 + i * 0.12 }}
                 className={`group relative rounded-2xl border border-border bg-card overflow-hidden cursor-pointer transition-all duration-300 ${project.border} hover:shadow-xl hover:shadow-black/20`}
                 onClick={() => setActiveProject(project)}
                 whileHover={{ y: -6 }}
                 data-testid={`card-project-${project.id}`}
               >
-                <div className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden flex items-center justify-center`}>
-                  <Icon className={`w-16 h-16 ${project.accentColor} opacity-30`} />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="px-4 py-2 rounded-full bg-background/80 text-xs font-medium flex items-center gap-1.5">
+                <div className={`h-40 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+                  {project.flagship && (
+                    <span className="absolute top-2.5 left-2.5 flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary text-primary-foreground text-[10px] font-semibold tracking-wide">
+                      <Star className="w-3 h-3" /> Flagship
+                    </span>
+                  )}
+                  <span
+                    className={`absolute top-2.5 right-2.5 px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wide ${
+                      project.status === "Ongoing" ? "bg-amber-500/90 text-black" : "bg-background/80 text-foreground"
+                    }`}
+                  >
+                    {project.status}
+                  </span>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30">
+                    <span className="px-4 py-2 rounded-full bg-background/90 text-xs font-medium flex items-center gap-1.5">
                       View Case Study <ArrowRight className="w-3 h-3" />
                     </span>
                   </div>

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import { GraduationCap, BookOpen, Award } from "lucide-react";
 
 const educationItems = [
@@ -9,13 +9,13 @@ const educationItems = [
     specialization: "Artificial Intelligence & Machine Learning",
     institution: "Lovely Professional University",
     location: "Phagwara, Punjab, India",
-    period: "2022 – 2026",
+    period: "2022 – 2029",
     grade: "CGPA: 8.3 / 10.0",
     highlights: [
       "Specialization in AI & Machine Learning",
-      "Coursework: Neural Networks, Computer Vision, NLP, Data Structures",
-      "Active participant in university hackathons and coding clubs",
-      "Final year research: ML applications in real-world systems",
+      "Coursework: Data Structures, DBMS, Operating Systems, Computer Networks",
+      "Freelance full-stack SaaS development alongside coursework",
+      "Actively applying AI/ML concepts to production software",
     ],
     color: "from-amber-500/20 to-primary/10",
     iconColor: "text-primary",
@@ -39,14 +39,11 @@ const educationItems = [
   },
 ];
 
-const onlineCourses = [
-  { name: "Python for Data Science & AI", provider: "IBM / Coursera" },
-  { name: "Machine Learning Specialization", provider: "DeepLearning.AI" },
-  { name: "Full Stack Web Development", provider: "The Odin Project" },
-  { name: "CS50's Introduction to AI", provider: "Harvard / edX" },
+const certifications = [
+  { name: "Leadership Fundamentals", provider: "EduTech Hub", date: "October 2025" },
 ];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
@@ -135,19 +132,19 @@ export function Education() {
           >
             <div className="rounded-2xl border border-border bg-card p-6">
               <h3 className="font-bold mb-4 text-sm tracking-widest uppercase text-muted-foreground">
-                Online Learning
+                Certifications
               </h3>
               <div className="space-y-3">
-                {onlineCourses.map((course, i) => (
+                {certifications.map((course, i) => (
                   <div
                     key={course.name}
-                    className="flex items-start gap-3 p-3 rounded-xl bg-muted/30 hover:bg-muted/60 transition-colors"
+                    className="flex items-start gap-3 p-4 rounded-xl bg-muted/30 hover:bg-muted/60 transition-colors border border-border/60"
                     data-testid={`card-course-${i}`}
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+                    <Award className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                     <div>
                       <div className="text-sm font-medium leading-tight">{course.name}</div>
-                      <div className="text-xs text-muted-foreground mt-0.5">{course.provider}</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">{course.provider} · {course.date}</div>
                     </div>
                   </div>
                 ))}

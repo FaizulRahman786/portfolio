@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import { GraduationCap, Target, Lightbulb, Zap } from "lucide-react";
 
 function AnimatedStat({ value, label }: { value: string; label: string }) {
@@ -32,7 +32,7 @@ const terminalLines = [
   { prompt: "$ echo $CGPA", delay: 2.0 },
   { prompt: "8.3 / 10.0", delay: 2.3, output: true },
   { prompt: "$ echo $STATUS", delay: 2.6 },
-  { prompt: "Actively seeking opportunities...", delay: 2.9, output: true },
+  { prompt: "Freelancing & open to full-time roles", delay: 2.9, output: true },
 ];
 
 function Terminal() {
@@ -82,7 +82,7 @@ const strengths = [
   { icon: GraduationCap, title: "Academic Excellence", desc: "8.3 CGPA in CSE (AI & ML) program" },
 ];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
@@ -121,9 +121,9 @@ export function About() {
             <Terminal />
 
             <div className="grid grid-cols-3 gap-6 mt-8 p-6 rounded-xl border border-border bg-card">
-              <AnimatedStat value="3+" label="Projects Built" />
+              <AnimatedStat value="4+" label="Projects Shipped" />
               <AnimatedStat value="8.3" label="CGPA Score" />
-              <AnimatedStat value="10+" label="Technologies" />
+              <AnimatedStat value="20+" label="Technologies" />
             </div>
           </motion.div>
 
@@ -135,19 +135,21 @@ export function About() {
           >
             <div className="prose prose-sm dark:prose-invert max-w-none">
               <p className="text-muted-foreground leading-relaxed text-base">
-                I believe that great software comes from a deep understanding of both the problem domain
-                and the technical craft. My journey began with curiosity about how machines learn —
-                and led me to build everything from AI recognition systems to full SaaS platforms.
+                I'm a Full Stack Developer and B.Tech Computer Science (AI &amp; ML) undergraduate
+                who builds scalable SaaS platforms, modern web applications, and secure,
+                production-ready software for real businesses — not just tutorials.
               </p>
               <p className="text-muted-foreground leading-relaxed text-base mt-4">
-                Currently pursuing B.Tech in Computer Science &amp; Engineering with a specialization
-                in Artificial Intelligence &amp; Machine Learning at Lovely Professional University,
-                where I maintain a CGPA of 8.3. My goal is to bridge the gap between research and
-                real-world applications — building AI systems that are not just accurate, but useful.
+                My work spans responsive user interfaces, authentication systems, REST APIs, cloud
+                deployment, and payment integration. I'm currently pursuing my B.Tech in Computer
+                Science &amp; Engineering with a specialization in AI &amp; Machine Learning at
+                Lovely Professional University, maintaining a CGPA of 8.3.
               </p>
               <p className="text-muted-foreground leading-relaxed text-base mt-4">
-                Outside of code, I actively participate in hackathons, contribute to open-source
-                projects, and continuously learn from the fast-moving world of AI and MLOps.
+                As an independent freelance developer since August 2025, I've shipped full-stack
+                SaaS products for real clients — from career platforms to e-commerce and
+                restaurant management systems — owning everything from database design to
+                deployment.
               </p>
             </div>
 

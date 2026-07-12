@@ -45,9 +45,9 @@ export function Footer() {
 
           <div className="flex items-center gap-3">
             {[
-              { icon: Github, href: "https://github.com/faizulrahman", label: "GitHub" },
-              { icon: Linkedin, href: "https://linkedin.com/in/faizulrahman", label: "LinkedIn" },
-              { icon: Mail, href: "mailto:faizul@example.com", label: "Email" },
+              { icon: Github, href: "https://github.com/FaizulRahman786", label: "GitHub" },
+              { icon: Linkedin, href: "https://linkedin.com/in/faizul-rahman-87974b397", label: "LinkedIn" },
+              { icon: Mail, href: "mailto:rahmanadnan412@gmail.com", label: "Email" },
             ].map(({ icon: Icon, href, label }) => (
               <motion.a
                 key={label}

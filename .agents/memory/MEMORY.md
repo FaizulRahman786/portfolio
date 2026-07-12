@@ -1,0 +1,1 @@
+- [Imported artifact.toml not registered](imported-artifact-not-registered.md) — createArtifact fails "dir exists" for pre-existing artifacts/<slug>; listArtifacts() empty means it's unregistered, not that no work is needed.

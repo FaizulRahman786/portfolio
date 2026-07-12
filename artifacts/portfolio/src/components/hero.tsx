@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Download, Mail, Github, Linkedin } from "lucide-react";
+import profileImage from "@assets/profile-faizul.png";
 
 const TYPED_STRINGS = [
-  "AI Engineer",
-  "ML Enthusiast",
   "Full Stack Developer",
-  "Problem Solver",
+  "AI & ML Undergraduate",
+  "Frontend Developer",
+  "UI/UX Developer",
+  "Freelancer",
+  "SaaS Developer",
 ];
 
 function TypedText() {
@@ -87,7 +90,7 @@ function ParticleCanvas() {
         if (p.y > canvas.height) p.y = 0;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(251, 191, 36, ${p.opacity})`;
+        ctx.fillStyle = `rgba(45, 158, 105, ${p.opacity})`;
         ctx.fill();
       });
 
@@ -98,7 +101,7 @@ function ParticleCanvas() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 120) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(251, 191, 36, ${0.08 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(45, 158, 105, ${0.08 * (1 - dist / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -126,7 +129,7 @@ function ParticleCanvas() {
   );
 }
 
-const container = {
+const container: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -134,7 +137,7 @@ const container = {
   },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] } },
 };
@@ -149,6 +152,24 @@ export function Hero() {
       <ParticleCanvas />
 
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/60 pointer-events-none" />
+
+      <motion.div
+        initial={{ opacity: 0, x: -30, y: -10 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        className="absolute top-24 left-4 sm:left-8 lg:left-12 z-10"
+      >
+        <div className="relative">
+          <div className="absolute -inset-1.5 rounded-2xl bg-primary/30 blur-xl" aria-hidden="true" />
+          <img
+            src={profileImage}
+            alt="Faizul Rahman"
+            className="relative w-20 h-20 sm:w-28 sm:h-28 rounded-2xl object-cover border-2 border-primary/40 shadow-2xl shadow-primary/20"
+            loading="eager"
+            data-testid="img-hero-profile"
+          />
+        </div>
+      </motion.div>
 
       <motion.div
         className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
@@ -193,9 +214,9 @@ export function Hero() {
           className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
           data-testid="text-hero-intro"
         >
-          I'm an AI &amp; ML engineering student at Lovely Professional University passionate about
-          solving real-world problems through intelligent systems and scalable software.
-          From computer vision pipelines to full-stack SaaS — I build things that matter.
+          Full Stack Developer and B.Tech Computer Science (AI &amp; ML) undergraduate building
+          production-ready SaaS platforms, secure authentication systems, and polished user
+          interfaces — from concept to cloud deployment.
         </motion.p>
 
         <motion.div
@@ -241,9 +262,9 @@ export function Hero() {
           className="flex items-center justify-center gap-4"
         >
           {[
-            { icon: Github, href: "https://github.com/faizulrahman", label: "GitHub" },
-            { icon: Linkedin, href: "https://linkedin.com/in/faizulrahman", label: "LinkedIn" },
-            { icon: Mail, href: "mailto:faizul@example.com", label: "Email" },
+            { icon: Github, href: "https://github.com/FaizulRahman786", label: "GitHub" },
+            { icon: Linkedin, href: "https://linkedin.com/in/faizul-rahman-87974b397", label: "LinkedIn" },
+            { icon: Mail, href: "mailto:rahmanadnan412@gmail.com", label: "Email" },
           ].map(({ icon: Icon, href, label }) => (
             <motion.a
               key={label}

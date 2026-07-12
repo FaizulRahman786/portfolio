@@ -1,15 +1,24 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Code2, Sun, Moon } from "lucide-react";
+import { Menu, X, Code2, Sun, Moon, ChevronDown } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+const aboutLinks = [
+  { label: "My Story", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
+  { label: "Achievements", href: "#achievements" },
+];
 
 const navLinks = [
-  { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Achievements", href: "#achievements" },
-  { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -57,6 +66,30 @@ export function Navbar() {
             </motion.a>
 
             <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <motion.button
+                    className="flex items-center gap-1 px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-muted/50"
+                    whileHover={{ scale: 1.02 }}
+                    data-testid="link-nav-about"
+                  >
+                    About <ChevronDown className="w-3 h-3" />
+                  </motion.button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" data-testid="dropdown-about">
+                  {aboutLinks.map((link) => (
+                    <DropdownMenuItem
+                      key={link.href}
+                      onClick={() => scrollTo(link.href)}
+                      className="cursor-pointer"
+                      data-testid={`link-nav-about-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+                    >
+                      {link.label}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+
               {navLinks.map((link) => (
                 <motion.a
                   key={link.href}
@@ -118,6 +151,21 @@ export function Navbar() {
             data-testid="mobile-menu"
           >
             <nav className="flex flex-col p-4 gap-1" aria-label="Mobile navigation">
+              <div className="px-4 py-2 text-xs font-semibold tracking-widest text-muted-foreground uppercase">
+                About
+              </div>
+              {aboutLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
+                  className="px-6 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
+                  data-testid={`link-mobile-about-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <div className="h-px bg-border my-2" />
               {navLinks.map((link) => (
                 <a
                   key={link.href}
