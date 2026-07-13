@@ -54,7 +54,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "4 min read",
     tags: ["Freelance", "Career"],
     content: [
-      "I started freelancing in August 2025, while still working through my B.Tech in Computer Science with a specialization in AI & ML at Lovely Professional University. It wasn't part of any plan laid out for me — it came from wanting to test what I was learning against something with real stakes.",
+      "I started freelancing in January 2025, while still working through my B.Tech in Computer Science with a specialization in AI & ML at Lovely Professional University. It wasn't part of any plan laid out for me — it came from wanting to test what I was learning against something with real stakes.",
       "The first thing freelancing taught me is that clients don't care about your tech stack — they care about whether their problem gets solved. That reframed how I approach every project: start with the business outcome, then choose the tools, not the other way around.",
       "The second thing it taught me is scope discipline. Left unmanaged, every project grows new requirements every week. Learning to scope a first version, ship it, and iterate — rather than trying to build the 'perfect' version up front — made me faster and made clients happier.",
       "The third thing, and maybe the most valuable, is that freelancing filled in exactly the gaps that coursework leaves open: deployment, payments, client communication, pricing, and maintaining something after it ships. Those are the skills that turn a student who can code into an engineer who can deliver.",

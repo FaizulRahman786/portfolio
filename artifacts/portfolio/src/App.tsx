@@ -48,7 +48,7 @@ function App() {
       "@type": "Person",
       "name": "Faizul Rahman",
       "jobTitle": "Full Stack Engineer & SaaS Architect",
-      "url": "https://faizul.vercel.app",
+      "url": "https://faizul-rahman.vercel.app",
       "sameAs": [
         "https://github.com/FaizulRahman786",
         "https://linkedin.com/in/faizul-rahman-87974b397"

@@ -105,7 +105,7 @@ export function Contact() {
                 {[
                   { icon: Mail, label: "Email", value: "rahmanadnan412@gmail.com", href: "mailto:rahmanadnan412@gmail.com" },
                   { icon: MessageCircle, label: "WhatsApp Chat", value: "+91 78580 62571", href: "https://wa.me/917858062571" },
-                  { icon: MapPin, label: "Location", value: "Bihar, India (Remote & UTC+5:30)", href: null },
+                  { icon: MapPin, label: "Location", value: "Phagwara, Punjab, India (UTC+5:30)", href: null },
                 ].map(({ icon: Icon, label, value, href }) => (
                   <div key={label} className="flex items-center gap-3" data-testid={`contact-info-${label.toLowerCase().replace(/\s+/g, "-")}`}>
                     <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">

@@ -5,17 +5,16 @@ import { GraduationCap, BookOpen, Award } from "lucide-react";
 const educationItems = [
   {
     icon: GraduationCap,
-    degree: "B.Tech — Computer Science & Engineering",
-    specialization: "Artificial Intelligence & Machine Learning",
+    degree: "B.Tech – Computer Science & Engineering (AI & ML)",
+    specialization: "Artificial Intelligence & Machine Learning Specialization",
     institution: "Lovely Professional University",
     location: "Phagwara, Punjab, India",
-    period: "2022 – Present (Expected Graduation: 2029)",
-    grade: "CGPA: 8.3 / 10.0",
+    period: "Expected Graduation: 2029",
+    grade: "CGPA: 8.1",
     highlights: [
-      "Specialization in AI & Machine Learning",
-      "Coursework: Data Structures, DBMS, Operating Systems, Computer Networks",
-      "Freelance full-stack SaaS development alongside coursework",
-      "Actively applying AI/ML concepts to production software",
+      "Core CS: Data Structures & Algorithms, OOP, DBMS, Operating Systems, Computer Networks, Software development",
+      "Hands-on experience building production-ready SaaS platforms and full-stack web applications",
+      "Active freelance developer partnering directly with founders and clients"
     ],
     color: "from-amber-500/20 to-primary/10",
     iconColor: "text-primary",
@@ -23,24 +22,40 @@ const educationItems = [
   },
   {
     icon: BookOpen,
-    degree: "Higher Secondary — Science (PCM)",
-    specialization: "Physics, Chemistry, Mathematics",
-    institution: "Senior Secondary School",
-    location: "India",
-    period: "2020 – 2022",
-    grade: "Secured strong academic foundation",
+    degree: "High School (12th Grade – Science)",
+    specialization: "Physics, Chemistry, Mathematics (PCM)",
+    institution: "High School, Fatuha",
+    location: "Fatuha, Bihar, India",
+    period: "2023 – 2025",
+    grade: "Percentage: 80%",
     highlights: [
-      "Mathematics and Physics focus with computing elective",
-      "Developed early interest in programming and problem solving",
+      "Completed higher secondary school education with 80% marks",
+      "Developed a solid foundation in Physics, Chemistry, and Mathematics"
     ],
     color: "from-blue-500/20 to-cyan-500/10",
     iconColor: "text-blue-400",
     iconBg: "bg-blue-400/10",
   },
+  {
+    icon: BookOpen,
+    degree: "10th Grade",
+    specialization: "Secondary School Education",
+    institution: "Infant Jesus, Baktiyarpur",
+    location: "Baktiyarpur, Bihar, India",
+    period: "Completed: 2023",
+    grade: "Percentage: 90.6%",
+    highlights: [
+      "Secured outstanding academic performance of 90.6% marks",
+      "Gained foundational skills in Mathematics, Sciences, and Languages"
+    ],
+    color: "from-purple-500/20 to-pink-500/10",
+    iconColor: "text-purple-400",
+    iconBg: "bg-purple-400/10",
+  },
 ];
 
 const certifications = [
-  { name: "Leadership Fundamentals", provider: "EduTech Hub", date: "October 2025" },
+  { name: "Leadership fundamental", provider: "Edutech", date: "November 2025" },
 ];
 
 const fadeUp: Variants = {
