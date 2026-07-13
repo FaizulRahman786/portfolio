@@ -27,25 +27,25 @@ const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Python", icon: SiPython, projects: ["Freelance Work"], color: "#3776AB" },
       { name: "TypeScript", icon: SiTypescript, projects: ["MB Career Connection", "Anamika SaaS Platform"], color: "#3178C6" },
-      { name: "JavaScript", icon: SiJavascript, projects: ["MB Career Connection", "Anamika SaaS Platform"], color: "#F7DF1E" },
-      { name: "HTML & CSS", icon: SiHtml5, projects: ["MB Career Connection", "Anamika SaaS Platform"], color: "#E34F26" },
+      { name: "JavaScript", icon: SiJavascript, projects: ["MB Career Connection", "Pizzeria Town"], color: "#F7DF1E" },
+      { name: "HTML & CSS", icon: SiHtml5, projects: ["Jewellery Shop Website", "Pizzeria Town"], color: "#E34F26" },
     ],
   },
   {
     name: "Frontend",
     description: "Building interfaces users love",
     skills: [
-      { name: "React", icon: SiReact, projects: ["MB Career Connection", "Anamika SaaS Platform"], color: "#61DAFB" },
+      { name: "React", icon: SiReact, projects: ["MB Career Connection", "Anamika SaaS Platform", "Jewellery Shop Website"], color: "#61DAFB" },
       { name: "Vite", icon: SiVite, projects: ["MB Career Connection", "Anamika SaaS Platform"], color: "#646CFF" },
-      { name: "Bootstrap", icon: SiBootstrap, projects: ["Anamika SaaS Platform"], color: "#7952B3" },
+      { name: "Bootstrap", icon: SiBootstrap, projects: ["Jewellery Shop Website", "Anamika SaaS Platform"], color: "#7952B3" },
     ],
   },
   {
     name: "Backend & APIs",
     description: "Scalable services powering products",
     skills: [
-      { name: "Node.js", icon: SiNodedotjs, projects: ["MB Career Connection", "Anamika SaaS Platform"], color: "#339933" },
-      { name: "Express.js", icon: SiExpress, projects: ["MB Career Connection", "Anamika SaaS Platform"], color: "#888888" },
+      { name: "Node.js", icon: SiNodedotjs, projects: ["MB Career Connection", "Jewellery Shop Website"], color: "#339933" },
+      { name: "Express.js", icon: SiExpress, projects: ["MB Career Connection", "Jewellery Shop Website"], color: "#888888" },
       { name: "Django", icon: SiDjango, projects: ["Freelance Work"], color: "#092E20" },
     ],
   },
@@ -53,8 +53,8 @@ const skillCategories: SkillCategory[] = [
     name: "Databases",
     description: "Data at any scale",
     skills: [
-      { name: "PostgreSQL", icon: SiPostgresql, projects: ["MB Career Connection", "Anamika SaaS Platform"], color: "#4169E1" },
-      { name: "MongoDB", icon: SiMongodb, projects: ["Anamika SaaS Platform"], color: "#47A248" },
+      { name: "PostgreSQL", icon: SiPostgresql, projects: ["MB Career Connection"], color: "#4169E1" },
+      { name: "MongoDB", icon: SiMongodb, projects: ["Jewellery Shop Website"], color: "#47A248" },
       { name: "Firebase", icon: SiFirebase, projects: ["MB Career Connection", "Anamika SaaS Platform"], color: "#FFCA28" },
       { name: "Supabase", icon: SiSupabase, projects: ["Freelance Work"], color: "#3ECF8E" },
     ],
@@ -65,7 +65,7 @@ const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Vercel", icon: SiVercel, projects: ["MB Career Connection", "Anamika SaaS Platform"], color: "#888888" },
       { name: "Render", icon: SiRender, projects: ["Freelance Work"], color: "#46E3B7" },
-      { name: "Cloudinary", icon: SiCloudinary, projects: ["MB Career Connection", "Anamika SaaS Platform"], color: "#3448C5" },
+      { name: "Cloudinary", icon: SiCloudinary, projects: ["MB Career Connection", "Jewellery Shop Website"], color: "#3448C5" },
       { name: "Git & GitHub", icon: SiGit, projects: ["Version Control", "CI/CD"], color: "#F05032" },
     ],
   },

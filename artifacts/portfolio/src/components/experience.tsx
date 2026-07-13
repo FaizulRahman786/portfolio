@@ -11,7 +11,7 @@ const timeline = [
   { year: "2023", label: "Full-Stack Web Foundations", desc: "Engineered responsive layouts and interactive scripts using vanilla web technologies." },
   { year: "2024", label: "Component-Driven Frontend Architectures", desc: "Adopted React and TypeScript; designed modular UI systems for local business platforms." },
   { year: "2024", label: "Backend Engineering & Schema Design", desc: "Designed relational and document database pipelines using Node.js, Express, and MongoDB." },
-  { year: "Jan 2025", label: "Began Freelance SaaS Consulting", desc: "Partnered directly with startup founders to engineer and deploy custom full-stack SaaS applications." },
+  { year: "Aug 2025", label: "Began Freelance SaaS Consulting", desc: "Partnered directly with startup founders to engineer and deploy custom full-stack SaaS applications." },
   { year: "Late 2025", label: "AI & ML System Specialization", desc: "Integrated intelligent models (e.g. vision pipelines, recommendation algorithms) into client applications." },
   { year: "Present", label: "SaaS Scale & API Latency Optimization", desc: "Refactoring legacy client backends for concurrency and optimizing page speed indices." },
 ];
@@ -62,7 +62,7 @@ export function Experience() {
                   </h3>
                 </div>
                 <p className="text-sm text-primary font-medium mb-1">Freelance Software Consultant</p>
-                <p className="text-xs font-mono text-muted-foreground mb-6">January 2025 – Present</p>
+                <p className="text-xs font-mono text-muted-foreground mb-6">August 2025 – Present</p>
                 
                 {/* Measurable Google XYZ Achievements */}
                 <ul className="space-y-4">

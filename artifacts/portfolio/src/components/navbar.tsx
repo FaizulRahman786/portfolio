@@ -29,6 +29,8 @@ const projectLinks = [
   { label: "All Projects", href: "#projects" },
   { label: "MB Career Connection", href: "#mb-career-connect" },
   { label: "Anamika SaaS Platform", href: "#anamika-saas" },
+  { label: "Jewellery Shop Website", href: "#kainnat-jewellery" },
+  { label: "Pizzeria Town", href: "#pizzeria-town" },
 ];
 
 export function Navbar() {
