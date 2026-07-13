@@ -1,207 +1,210 @@
-import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence, type Variants } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView, type Variants } from "framer-motion";
 import {
-  SiPython, SiJavascript, SiTypescript, SiHtml5, SiCss, SiCplusplus, SiC,
-  SiReact, SiNodedotjs, SiExpress, SiDjango, SiBootstrap, SiTailwindcss, SiVite,
+  SiPython, SiJavascript, SiTypescript, SiHtml5, SiCss,
+  SiReact, SiNodedotjs, SiExpress, SiDjango, SiBootstrap,
   SiPostgresql, SiMongodb, SiFirebase, SiSupabase,
-  SiJsonwebtokens, SiClerk,
-  SiGit, SiGithub, SiCloudinary, SiCloudflare, SiVercel, SiRazorpay, SiPostman,
+  SiGit, SiGithub, SiVite, SiCloudinary, SiVercel, SiRender,
 } from "react-icons/si";
-import { Code2, Cpu } from "lucide-react";
 
-const filters = ["All", "Languages", "Frontend", "Backend", "Database", "Cloud", "Tools", "Core CS"] as const;
-type Filter = (typeof filters)[number];
+interface SkillItem {
+  name: string;
+  icon: React.ComponentType<{ className?: string }>;
+  projects: string[];
+  color?: string; // brand color for the icon bg tint
+}
 
-const skillCategories: { name: Filter; skills: { name: string; icon: React.ComponentType<{ className?: string }> }[] }[] = [
+interface SkillCategory {
+  name: string;
+  description: string;
+  skills: SkillItem[];
+}
+
+const skillCategories: SkillCategory[] = [
   {
-    name: "Languages",
+    name: "Languages & Core",
+    description: "The foundation everything is built on",
     skills: [
-      { name: "Python", icon: SiPython },
-      { name: "JavaScript", icon: SiJavascript },
-      { name: "TypeScript", icon: SiTypescript },
-      { name: "C", icon: SiC },
-      { name: "C++", icon: SiCplusplus },
+      { name: "Python", icon: SiPython, projects: ["Face Recognition System"], color: "#3776AB" },
+      { name: "TypeScript", icon: SiTypescript, projects: ["MB Career Connect", "Anamika SaaS"], color: "#3178C6" },
+      { name: "JavaScript", icon: SiJavascript, projects: ["MB Career Connect", "Pizzeria Town"], color: "#F7DF1E" },
+      { name: "HTML & CSS", icon: SiHtml5, projects: ["Jewellery Website", "Pizzeria Town"], color: "#E34F26" },
     ],
   },
   {
     name: "Frontend",
+    description: "Building interfaces users love",
     skills: [
-      { name: "React", icon: SiReact },
-      { name: "TypeScript", icon: SiTypescript },
-      { name: "HTML", icon: SiHtml5 },
-      { name: "CSS", icon: SiCss },
-      { name: "Tailwind", icon: SiTailwindcss },
-      { name: "Bootstrap", icon: SiBootstrap },
-      { name: "Vite", icon: SiVite },
+      { name: "React", icon: SiReact, projects: ["MB Career Connect", "Anamika SaaS"], color: "#61DAFB" },
+      { name: "Vite", icon: SiVite, projects: ["MB Career Connect", "Anamika SaaS"], color: "#646CFF" },
+      { name: "Bootstrap", icon: SiBootstrap, projects: ["Jewellery Website", "Anamika SaaS"], color: "#7952B3" },
     ],
   },
   {
-    name: "Backend",
+    name: "Backend & APIs",
+    description: "Scalable services powering products",
     skills: [
-      { name: "Node.js", icon: SiNodedotjs },
-      { name: "Express.js", icon: SiExpress },
-      { name: "Django", icon: SiDjango },
-      { name: "REST APIs", icon: Code2 },
+      { name: "Node.js", icon: SiNodedotjs, projects: ["MB Career Connect", "Jewellery Website"], color: "#339933" },
+      { name: "Express.js", icon: SiExpress, projects: ["MB Career Connect", "Jewellery Website"], color: "#888888" },
+      { name: "Django", icon: SiDjango, projects: ["ML Inference APIs"], color: "#092E20" },
     ],
   },
   {
-    name: "Database",
+    name: "Databases",
+    description: "Data at any scale",
     skills: [
-      { name: "MongoDB", icon: SiMongodb },
-      { name: "PostgreSQL", icon: SiPostgresql },
-      { name: "Firebase", icon: SiFirebase },
-      { name: "Supabase", icon: SiSupabase },
+      { name: "PostgreSQL", icon: SiPostgresql, projects: ["MB Career Connect"], color: "#4169E1" },
+      { name: "MongoDB", icon: SiMongodb, projects: ["Jewellery Website"], color: "#47A248" },
+      { name: "Firebase", icon: SiFirebase, projects: ["MB Career Connect", "Anamika SaaS"], color: "#FFCA28" },
+      { name: "Supabase", icon: SiSupabase, projects: ["Internal Tools"], color: "#3ECF8E" },
     ],
   },
   {
-    name: "Cloud",
+    name: "Cloud & DevOps",
+    description: "Deployment, CI/CD, and monitoring",
     skills: [
-      { name: "Vercel", icon: SiVercel },
-      { name: "Cloudinary", icon: SiCloudinary },
-      { name: "Cloudflare", icon: SiCloudflare },
-      { name: "Razorpay", icon: SiRazorpay },
-      { name: "Clerk Auth", icon: SiClerk },
-      { name: "JWT", icon: SiJsonwebtokens },
-    ],
-  },
-  {
-    name: "Tools",
-    skills: [
-      { name: "Git", icon: SiGit },
-      { name: "GitHub", icon: SiGithub },
-      { name: "Postman", icon: SiPostman },
-    ],
-  },
-  {
-    name: "Core CS",
-    skills: [
-      { name: "DSA", icon: Cpu },
-      { name: "OOP", icon: Cpu },
-      { name: "DBMS", icon: Cpu },
-      { name: "Operating Systems", icon: Cpu },
-      { name: "Computer Networks", icon: Cpu },
-      { name: "Software Engineering", icon: Cpu },
+      { name: "Vercel", icon: SiVercel, projects: ["MB Career Connect", "Anamika SaaS"], color: "#888888" },
+      { name: "Render", icon: SiRender, projects: ["API Deployment", "Background Tasks"], color: "#46E3B7" },
+      { name: "Cloudinary", icon: SiCloudinary, projects: ["MB Career Connect", "Jewellery Website"], color: "#3448C5" },
+      { name: "Git & GitHub", icon: SiGit, projects: ["Version Control", "CI/CD"], color: "#F05032" },
     ],
   },
 ];
 
-function SkillCard({ skill, index }: { skill: { name: string; icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }> }; index: number }) {
+function SkillCard({ skill }: { skill: SkillItem }) {
   const Icon = skill.icon;
+  // Create subtle icon background using brand color at low opacity
+  const iconStyle = skill.color
+    ? { backgroundColor: `${skill.color}12`, border: `1px solid ${skill.color}25` }
+    : undefined;
+
   return (
     <motion.div
-      layout
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -12 }}
-      transition={{ duration: 0.25, delay: index * 0.02 }}
-      className="flex flex-col items-center gap-2 p-4 rounded-xl border border-border bg-card hover:border-primary/40 hover:bg-primary/5 transition-colors group cursor-default"
-      whileHover={{ y: -4, scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
+      className="flex items-start gap-3.5 p-4 rounded-xl border border-border bg-card hover:border-primary/30 hover:bg-primary/5 transition-all group cursor-default"
+      whileHover={{ y: -2 }}
       data-testid={`skill-card-${skill.name.toLowerCase().replace(/[\.\s]/g, "")}`}
     >
-      <Icon className="w-7 h-7 text-muted-foreground group-hover:text-primary transition-colors" />
-      <span className="text-xs font-medium text-center">{skill.name}</span>
+      <div
+        className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-all group-hover:scale-105"
+        style={iconStyle || { backgroundColor: "hsl(var(--muted)/0.8)" }}
+      >
+        <span style={{ color: skill.color || "hsl(var(--muted-foreground))" }} aria-hidden="true">
+          <Icon className="w-[18px] h-[18px]" />
+        </span>
+      </div>
+      <div className="space-y-1 min-w-0">
+        <span className="text-sm font-semibold text-foreground block group-hover:text-primary transition-colors">
+          {skill.name}
+        </span>
+        <div className="text-[10px] text-muted-foreground leading-tight">
+          <span className="font-mono text-primary/50">// </span>
+          {skill.projects.slice(0, 2).join(", ")}
+          {skill.projects.length > 2 && ` +${skill.projects.length - 2}`}
+        </div>
+      </div>
     </motion.div>
   );
 }
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
 };
 
 export function Skills() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [activeFilter, setActiveFilter] = useState<Filter>("All");
-
-  const visibleCategories =
-    activeFilter === "All" ? skillCategories : skillCategories.filter((c) => c.name === activeFilter);
 
   return (
-    <section id="skills" ref={ref} className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/20" aria-label="Skills section">
-      <div className="max-w-6xl mx-auto">
+    <section
+      id="skills"
+      ref={ref}
+      className="py-28 px-4 sm:px-6 lg:px-8 section-alt"
+      aria-label="Skills and technologies"
+    >
+      <div className="max-w-7xl mx-auto">
+
+        {/* Header */}
         <motion.div
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
-          className="text-center mb-12"
+          variants={{ show: { transition: { staggerChildren: 0.08 } } }}
+          className="text-center mb-16"
         >
-          <motion.p variants={fadeUp} className="text-primary text-sm font-medium tracking-widest uppercase mb-3">
-            Skills &amp; Technologies
+          <motion.p variants={fadeUp} className="text-xs font-semibold tracking-[0.18em] text-primary uppercase mb-4">
+            Stack & Tooling
           </motion.p>
-          <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl font-bold mb-4" data-testid="heading-skills">
-            The toolkit I use
+          <motion.h2
+            variants={fadeUp}
+            className="text-4xl sm:text-5xl font-bold mb-4"
+            data-testid="heading-skills"
+          >
+            Built with the right tools.
+            <br />
+            <span className="text-muted-foreground font-light">Not just the popular ones.</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-muted-foreground max-w-xl mx-auto">
-            A curated set of languages, frameworks, and tools I rely on to build
-            production-grade SaaS and web applications.
+          <motion.p variants={fadeUp} className="text-muted-foreground max-w-lg mx-auto text-sm leading-relaxed">
+            Every technology here has shipped to production. No resume padding.
           </motion.p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="flex flex-wrap items-center justify-center gap-2 mb-10"
-          role="tablist"
-          aria-label="Filter skills by category"
-        >
-          {filters.map((f) => (
-            <button
-              key={f}
-              onClick={() => setActiveFilter(f)}
-              role="tab"
-              aria-selected={activeFilter === f}
-              className={`px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all border ${
-                activeFilter === f
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "border-border text-muted-foreground hover:text-foreground hover:border-primary/40"
-              }`}
-              data-testid={`button-filter-${f.toLowerCase().replace(/\s+/g, "-")}`}
-            >
-              {f}
-            </button>
-          ))}
-        </motion.div>
-
+        {/* Categories */}
         <div className="space-y-10">
-          <AnimatePresence mode="popLayout">
-            {visibleCategories.map((cat) => (
-              <motion.div
-                key={cat.name}
-                layout
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              >
-                {activeFilter === "All" && (
-                  <h3 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">
-                    {cat.name}
-                  </h3>
-                )}
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                  {cat.skills.map((skill, i) => (
-                    <SkillCard key={`${cat.name}-${skill.name}`} skill={skill} index={i} />
-                  ))}
+          {skillCategories.map((category, catIdx) => (
+            <motion.div
+              key={category.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.1 + catIdx * 0.07, duration: 0.45, ease: "easeOut" }}
+              className="space-y-3"
+            >
+              {/* Category header */}
+              <div className="flex items-baseline gap-3">
+                <h3 className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">
+                  {category.name}
+                </h3>
+                <div className="text-[11px] text-muted-foreground/50 hidden sm:block">
+                  — {category.description}
                 </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+                <div className="flex-1 h-px bg-border/50" />
+              </div>
+
+              {/* Skills grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                {category.skills.map((skill, skillIdx) => (
+                  <motion.div
+                    key={skill.name}
+                    initial={{ opacity: 0, scale: 0.94 }}
+                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{
+                      delay: 0.15 + catIdx * 0.07 + skillIdx * 0.04,
+                      duration: 0.3,
+                      ease: "backOut",
+                    }}
+                  >
+                    <SkillCard skill={skill} />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
 
+        {/* Actively learning */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-10 p-6 rounded-xl border border-primary/20 bg-primary/5 max-w-2xl mx-auto"
+          transition={{ delay: 0.6, duration: 0.45 }}
+          className="mt-12 text-center"
         >
-          <div className="text-xs font-mono text-primary mb-2">// currently exploring</div>
-          <div className="flex flex-wrap gap-2 justify-center">
-            {["LangChain", "PyTorch", "FastAPI", "Docker", "AWS"].map((tech) => (
+          <p className="text-xs text-muted-foreground/60 mb-3 font-mono">
+            // actively deploying in research & projects
+          </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {["LangChain", "PyTorch", "FastAPI", "Docker", "AWS", "MLflow"].map((tech) => (
               <span
                 key={tech}
-                className="px-2.5 py-1 rounded-full border border-primary/30 text-xs text-primary bg-primary/10"
+                className="px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-xs text-primary font-medium"
                 data-testid={`badge-learning-${tech.toLowerCase()}`}
               >
                 {tech}

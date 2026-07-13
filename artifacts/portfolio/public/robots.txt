@@ -1,2 +1,8 @@
 User-agent: *
 Allow: /
+
+# Disallow dev/build artifacts
+Disallow: /dist/
+Disallow: /.replit-artifact/
+
+Sitemap: https://faizulrahman.dev/sitemap.xml

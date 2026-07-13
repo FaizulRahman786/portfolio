@@ -1,175 +1,226 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
-import { GraduationCap, Target, Lightbulb, Zap } from "lucide-react";
+import { Target, Lightbulb, Zap, Database, CheckCircle2 } from "lucide-react";
+import { brand } from "@/data/brand";
 
-function AnimatedStat({ value, label }: { value: string; label: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true });
-
-  return (
-    <div ref={ref} className="text-center" data-testid={`stat-${label.toLowerCase().replace(/\s+/g, "-")}`}>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={inView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 0.5, ease: "backOut" }}
-        className="text-3xl font-bold text-primary mb-1"
-      >
-        {value}
-      </motion.div>
-      <div className="text-xs text-muted-foreground">{label}</div>
-    </div>
-  );
-}
-
+/* ── Terminal ──────────────────────────────────────────────── */
 const terminalLines = [
-  { prompt: "$ whoami", delay: 0 },
-  { prompt: "faizul_rahman", delay: 0.3, output: true },
-  { prompt: "$ cat about.txt", delay: 0.6 },
-  { prompt: "AI & ML Engineering Student", delay: 0.9, output: true },
-  { prompt: "Full Stack Developer | Problem Solver", delay: 1.1, output: true },
-  { prompt: "$ echo $LOCATION", delay: 1.4 },
-  { prompt: "Lovely Professional University, Punjab, India", delay: 1.7, output: true },
-  { prompt: "$ echo $CGPA", delay: 2.0 },
-  { prompt: "8.3 / 10.0", delay: 2.3, output: true },
-  { prompt: "$ echo $STATUS", delay: 2.6 },
-  { prompt: "Freelancing & open to full-time roles", delay: 2.9, output: true },
+  { text: "whoami", isOutput: false },
+  { text: "faizul_rahman — Full Stack Engineer", isOutput: true },
+  { text: "cat philosophy.md", isOutput: false },
+  { text: "Fast by default. Maintainable by design.", isOutput: true },
+  { text: "Scalable by architecture.", isOutput: true },
+  { text: "echo $STACK", isOutput: false },
+  { text: "React · TypeScript · Node.js · PostgreSQL · Python", isOutput: true },
+  { text: "echo $STATUS", isOutput: false },
+  { text: "✓  Open to freelance contracts — Q3 2026", isOutput: true, accent: true },
 ];
 
 function Terminal() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true });
+  const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
     <div
       ref={ref}
-      className="rounded-xl border border-border bg-background/50 overflow-hidden font-mono text-xs"
+      className="rounded-xl border border-border overflow-hidden font-mono text-xs shadow-md"
       data-testid="terminal-about"
+      role="region"
+      aria-label="Developer profile terminal"
     >
+      {/* Title bar */}
       <div className="flex items-center gap-1.5 px-4 py-3 border-b border-border bg-muted/30">
-        <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
-        <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
-        <span className="ml-2 text-muted-foreground text-[10px]">faizul@portfolio ~ </span>
+        <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" aria-hidden="true" />
+        <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" aria-hidden="true" />
+        <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" aria-hidden="true" />
+        <span className="ml-3 text-muted-foreground/60 text-[10px]">faizul@portfolio ~ bash</span>
       </div>
-      <div className="p-4 space-y-1.5 min-h-[220px]">
+
+      {/* Content */}
+      <div className="p-4 space-y-1.5 min-h-[200px] bg-background/40">
         {terminalLines.map((line, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, x: -10 }}
+            initial={{ opacity: 0, x: -4 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: line.delay, duration: 0.3 }}
-            className={line.output ? "text-primary/80 pl-2" : "text-muted-foreground"}
+            transition={{ delay: i * 0.12, duration: 0.25, ease: "easeOut" }}
+            className={
+              line.accent
+                ? "text-emerald-500 pl-2 font-semibold"
+                : line.isOutput
+                  ? "text-foreground/90 pl-2 font-medium"
+                  : "text-muted-foreground"
+            }
           >
-            {!line.output && <span className="text-primary mr-1">›</span>}
-            {line.prompt}
+            {!line.isOutput && (
+              <span className="text-muted-foreground/50 mr-1.5" aria-hidden="true">$</span>
+            )}
+            {line.text}
           </motion.div>
         ))}
+
+        {/* Blinking cursor */}
         {inView && (
-          <div className="text-muted-foreground">
-            <span className="text-primary mr-1">›</span>
-            <span className="animate-pulse">_</span>
-          </div>
+          <motion.div
+            className="text-muted-foreground"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: terminalLines.length * 0.12 + 0.1 }}
+            aria-hidden="true"
+          >
+            <span className="text-muted-foreground/50 mr-1.5">$</span>
+            <span className="animate-cursor-blink text-primary">█</span>
+          </motion.div>
         )}
       </div>
     </div>
   );
 }
 
+/* ── Strength cards ────────────────────────────────────────── */
 const strengths = [
-  { icon: Zap, title: "Fast Learner", desc: "Rapidly adapt to new technologies and frameworks" },
-  { icon: Target, title: "Goal-Oriented", desc: "Focused on delivering production-grade solutions" },
-  { icon: Lightbulb, title: "Creative Thinker", desc: "Innovative approaches to complex problems" },
-  { icon: GraduationCap, title: "Academic Excellence", desc: "8.3 CGPA in CSE (AI & ML) program" },
+  { icon: Zap, title: "Performance-First", desc: "Sub-100ms API responses, 99 Lighthouse scores." },
+  { icon: Target, title: "SaaS Architecture", desc: "Multi-tenant backends built for scale." },
+  { icon: Database, title: "Database Design", desc: "Schema, indexing, caching strategies." },
+  { icon: Lightbulb, title: "AI Integration", desc: "CV pipelines & LLM APIs in production." },
+];
+
+/* ── Deliverables ──────────────────────────────────────────── */
+const deliverables = [
+  "End-to-end ownership — schema to deployment",
+  "40% average latency reduction on API layers",
+  "Lighthouse 99 scores on every shipped app",
+  "OWASP-compliant auth & data security",
+  "CI/CD pipelines with GitHub Actions + Vercel",
 ];
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
+/* ── About ─────────────────────────────────────────────────── */
 export function About() {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="about" ref={ref} className="py-24 px-4 sm:px-6 lg:px-8" aria-label="About section">
+    <section
+      id="about"
+      ref={ref}
+      className="py-28 px-4 sm:px-6 lg:px-8 bg-background"
+      aria-label="About Faizul Rahman"
+    >
       <div className="max-w-7xl mx-auto">
+
+        {/* Section header */}
         <motion.div
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
-          className="text-center mb-16"
+          variants={{ show: { transition: { staggerChildren: 0.08 } } }}
+          className="text-center mb-20"
         >
-          <motion.p variants={fadeUp} className="text-primary text-sm font-medium tracking-widest uppercase mb-3">
+          <motion.p
+            variants={fadeUp}
+            className="text-xs font-semibold tracking-[0.18em] text-primary uppercase mb-4"
+          >
             About Me
           </motion.p>
-          <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl font-bold mb-4" data-testid="heading-about">
-            Driven by curiosity,<br />built for impact
+          <motion.h2
+            variants={fadeUp}
+            className="text-4xl sm:text-5xl font-bold leading-tight mb-5"
+            data-testid="heading-about"
+          >
+            Building systems at scale,
+            <br />
+            <span className="text-muted-foreground font-light">optimized for performance</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            I'm a final-year B.Tech student specializing in AI & ML with a deep passion for
-            building systems that solve real problems — from computer vision pipelines to full-stack platforms.
+          <motion.p
+            variants={fadeUp}
+            className="text-muted-foreground max-w-xl mx-auto leading-relaxed"
+          >
+            {brand.mission}
           </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
+        {/* Main 2-column grid */}
+        <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-start">
+
+          {/* Left: terminal */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -32 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
           >
             <Terminal />
 
-            <div className="grid grid-cols-3 gap-6 mt-8 p-6 rounded-xl border border-border bg-card">
-              <AnimatedStat value="4+" label="Projects Shipped" />
-              <AnimatedStat value="8.3" label="CGPA Score" />
-              <AnimatedStat value="20+" label="Technologies" />
-            </div>
+            {/* Engineering quote */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.45, duration: 0.5 }}
+              className="mt-5 border-l-2 border-primary/40 pl-4 py-1"
+            >
+              <p className="text-sm text-muted-foreground italic">
+                "The best code is the code that ships, scales, and someone else can maintain."
+              </p>
+            </motion.div>
+
+            {/* What I deliver */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.55, duration: 0.5 }}
+              className="mt-6 space-y-2.5"
+            >
+              <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">
+                What I deliver
+              </p>
+              {deliverables.map((item) => (
+                <div key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                  <CheckCircle2
+                    className="w-3.5 h-3.5 text-primary mt-0.5 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  {item}
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
 
+          {/* Right: bio + strengths */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 32 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
             className="space-y-6"
           >
-            <div className="prose prose-sm dark:prose-invert max-w-none">
-              <p className="text-muted-foreground leading-relaxed text-base">
-                I'm a Full Stack Developer and B.Tech Computer Science (AI &amp; ML) undergraduate
-                who builds scalable SaaS platforms, modern web applications, and secure,
-                production-ready software for real businesses — not just tutorials.
-              </p>
-              <p className="text-muted-foreground leading-relaxed text-base mt-4">
-                My work spans responsive user interfaces, authentication systems, REST APIs, cloud
-                deployment, and payment integration. I'm currently pursuing my B.Tech in Computer
-                Science &amp; Engineering with a specialization in AI &amp; Machine Learning at
-                Lovely Professional University, maintaining a CGPA of 8.3.
-              </p>
-              <p className="text-muted-foreground leading-relaxed text-base mt-4">
-                As an independent freelance developer since August 2025, I've shipped full-stack
-                SaaS products for real clients — from career platforms to e-commerce and
-                restaurant management systems — owning everything from database design to
-                deployment.
-              </p>
+            {/* Bio paragraphs */}
+            <div className="space-y-4">
+              {brand.bio.map((para, i) => (
+                <p key={i} className="text-muted-foreground leading-relaxed text-[0.9375rem]">
+                  {para}
+                </p>
+              ))}
             </div>
 
-            <div className="border-l-2 border-primary/50 pl-4 py-1">
-              <p className="text-foreground font-medium italic">
-                "The best way to predict the future is to build it."
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              {strengths.map(({ icon: Icon, title, desc }) => (
+            {/* Strength cards */}
+            <div className="grid grid-cols-2 gap-3 pt-2">
+              {strengths.map(({ icon: Icon, title, desc }, i) => (
                 <motion.div
                   key={title}
-                  className="p-4 rounded-xl border border-border bg-card hover:border-primary/30 transition-colors group"
-                  whileHover={{ y: -3 }}
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 0.35 + i * 0.07, duration: 0.35, ease: "backOut" }}
+                  className="p-4 rounded-xl border border-border bg-card hover:border-primary/30 hover:bg-primary/5 transition-all group card-premium"
+                  whileHover={{ y: -2 }}
                   data-testid={`card-strength-${title.toLowerCase().replace(/\s+/g, "-")}`}
                 >
-                  <Icon className="w-5 h-5 text-primary mb-2 group-hover:scale-110 transition-transform" />
-                  <div className="text-sm font-semibold mb-1">{title}</div>
-                  <div className="text-xs text-muted-foreground">{desc}</div>
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/15 transition-colors">
+                    <Icon className="w-4 h-4 text-primary" aria-hidden="true" />
+                  </div>
+                  <div className="text-sm font-semibold mb-0.5 text-foreground">{title}</div>
+                  <div className="text-[11px] text-muted-foreground leading-tight">{desc}</div>
                 </motion.div>
               ))}
             </div>

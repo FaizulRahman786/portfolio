@@ -9,7 +9,7 @@ const educationItems = [
     specialization: "Artificial Intelligence & Machine Learning",
     institution: "Lovely Professional University",
     location: "Phagwara, Punjab, India",
-    period: "2022 – 2029",
+    period: "2022 – Present (Expected Graduation: 2029)",
     grade: "CGPA: 8.3 / 10.0",
     highlights: [
       "Specialization in AI & Machine Learning",
