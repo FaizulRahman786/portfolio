@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
 import {
-  SiPython, SiJavascript, SiTypescript, SiHtml5, SiCss,
+  SiPython, SiJavascript, SiTypescript, SiHtml5,
   SiReact, SiNodedotjs, SiExpress, SiDjango, SiBootstrap,
   SiPostgresql, SiMongodb, SiFirebase, SiSupabase,
-  SiGit, SiGithub, SiVite, SiCloudinary, SiVercel, SiRender,
+  SiGit, SiVite, SiCloudinary, SiVercel, SiRender,
 } from "react-icons/si";
 
 interface SkillItem {

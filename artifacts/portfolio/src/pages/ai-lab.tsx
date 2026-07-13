@@ -5,8 +5,7 @@ import { Footer } from "@/components/footer";
 import { BackToTop } from "@/components/back-to-top";
 import { ScrollProgress } from "@/components/scroll-progress";
 import {
-  Brain, FlaskConical, BookOpen, Cpu, MessageSquare, Lightbulb,
-  BookMarked, FileText, ExternalLink, Clock, Tag, ArrowRight
+  Brain, Cpu, Lightbulb, ExternalLink, Clock, ArrowRight
 } from "lucide-react";
 
 interface Experiment {

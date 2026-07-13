@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useLocation } from "wouter";
 import {
-  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
