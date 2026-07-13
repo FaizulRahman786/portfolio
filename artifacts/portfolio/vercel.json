@@ -1,5 +1,6 @@
 {
+  "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/((?!assets/|favicon.svg|robots.txt|sitemap.xml|resume.pdf|opengraph.jpg).*)", "destination": "/index.html" }
   ]
 }
