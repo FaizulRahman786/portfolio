@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Download, Mail, Github, Linkedin } from "lucide-react";
-import profileImage from "@assets/profile-faizul.png";
 
 const TYPED_STRINGS = [
   "Full Stack Developer",
@@ -154,36 +153,11 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/60 pointer-events-none" />
 
       <motion.div
-        initial={{ opacity: 0, x: -30, y: -10 }}
-        animate={{ opacity: 1, x: 0, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-        className="absolute top-24 left-4 sm:left-8 lg:left-12 z-10"
-      >
-        <div className="relative">
-          <div className="absolute -inset-1.5 rounded-2xl bg-primary/30 blur-xl" aria-hidden="true" />
-          <img
-            src={profileImage}
-            alt="Faizul Rahman"
-            className="relative w-20 h-20 sm:w-28 sm:h-28 rounded-2xl object-cover border-2 border-primary/40 shadow-2xl shadow-primary/20"
-            loading="eager"
-            data-testid="img-hero-profile"
-          />
-        </div>
-      </motion.div>
-
-      <motion.div
         className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
         variants={container}
         initial="hidden"
         animate="show"
       >
-        <motion.div variants={item} className="mb-4">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-medium tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            Available for opportunities
-          </span>
-        </motion.div>
-
         <motion.h1
           variants={item}
           className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-none"

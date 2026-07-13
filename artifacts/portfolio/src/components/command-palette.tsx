@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLocation } from "wouter";
 import {
   Command,
   CommandDialog,
@@ -10,7 +11,7 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
-import { Home, User, Code2, Briefcase, Trophy, GraduationCap, Mail, Github, Linkedin, Download, Sun, Moon } from "lucide-react";
+import { Home, User, Code2, Briefcase, Trophy, GraduationCap, Mail, Github, Linkedin, MessageCircle, Download, Sun, Moon, Newspaper } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 
 const sections = [
@@ -26,6 +27,7 @@ const sections = [
 const links = [
   { label: "GitHub", href: "https://github.com/FaizulRahman786", icon: Github },
   { label: "LinkedIn", href: "https://linkedin.com/in/faizul-rahman-87974b397", icon: Linkedin },
+  { label: "WhatsApp", href: "https://wa.me/917858062571", icon: MessageCircle },
   { label: "Email", href: "mailto:rahmanadnan412@gmail.com", icon: Mail },
 ];
 
@@ -36,13 +38,26 @@ interface CommandPaletteProps {
 
 export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
   const { theme, setTheme } = useTheme();
+  const [location, navigateTo] = useLocation();
 
   const navigate = (id: string) => {
     onOpenChange(false);
+    if (location !== "/") {
+      navigateTo("/");
+      setTimeout(() => {
+        document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 300);
+      return;
+    }
     setTimeout(() => {
       const el = document.querySelector(id);
       if (el) el.scrollIntoView({ behavior: "smooth" });
     }, 100);
+  };
+
+  const goToBlog = () => {
+    onOpenChange(false);
+    navigateTo("/blog");
   };
 
   const openLink = (href: string) => {
@@ -79,6 +94,10 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
               Go to {label}
             </CommandItem>
           ))}
+          <CommandItem onSelect={goToBlog} data-testid="command-nav-blog">
+            <Newspaper className="mr-2 h-4 w-4" />
+            Go to Blog
+          </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Links">

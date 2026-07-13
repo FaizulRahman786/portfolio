@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Code2, Sun, Moon, ChevronDown } from "lucide-react";
+import { Link, useLocation } from "wouter";
+import { Menu, X, Sun, Moon, ChevronDown } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import {
   DropdownMenu,
@@ -8,24 +9,27 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import profileImage from "@assets/profile-faizul.png";
 
 const aboutLinks = [
-  { label: "My Story", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Education", href: "#education" },
-  { label: "Achievements", href: "#achievements" },
+  { label: "About Us", href: "#about" },
+  { label: "Blog", href: "/blog", isRoute: true },
+  { label: "Contact", href: "#contact" },
 ];
 
 const navLinks = [
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Experience", href: "#experience" },
+  { label: "Achievements", href: "#achievements" },
+  { label: "Education", href: "#education" },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [location, navigate] = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -35,8 +39,24 @@ export function Navbar() {
 
   const scrollTo = (href: string) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (location === "/") {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+      }, 300);
+    }
+  };
+
+  const goHome = () => {
+    setMobileOpen(false);
+    if (location === "/") {
+      document.querySelector("#hero")?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/");
+    }
   };
 
   return (
@@ -56,12 +76,17 @@ export function Navbar() {
           <div className="flex items-center justify-between h-16">
             <motion.a
               href="#hero"
-              onClick={(e) => { e.preventDefault(); scrollTo("#hero"); }}
+              onClick={(e) => { e.preventDefault(); goHome(); }}
               className="flex items-center gap-2 text-primary font-bold text-lg"
               whileHover={{ scale: 1.05 }}
               data-testid="link-logo"
             >
-              <Code2 className="w-5 h-5" />
+              <img
+                src={profileImage}
+                alt="Faizul Rahman"
+                className="w-8 h-8 rounded-lg object-cover border border-primary/40"
+                data-testid="img-navbar-profile"
+              />
               <span>FR.</span>
             </motion.a>
 
@@ -77,16 +102,28 @@ export function Navbar() {
                   </motion.button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start" data-testid="dropdown-about">
-                  {aboutLinks.map((link) => (
-                    <DropdownMenuItem
-                      key={link.href}
-                      onClick={() => scrollTo(link.href)}
-                      className="cursor-pointer"
-                      data-testid={`link-nav-about-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
-                    >
-                      {link.label}
-                    </DropdownMenuItem>
-                  ))}
+                  {aboutLinks.map((link) =>
+                    link.isRoute ? (
+                      <DropdownMenuItem key={link.href} asChild className="cursor-pointer">
+                        <Link
+                          href={link.href}
+                          onClick={() => setMobileOpen(false)}
+                          data-testid={`link-nav-about-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+                        >
+                          {link.label}
+                        </Link>
+                      </DropdownMenuItem>
+                    ) : (
+                      <DropdownMenuItem
+                        key={link.href}
+                        onClick={() => scrollTo(link.href)}
+                        className="cursor-pointer"
+                        data-testid={`link-nav-about-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+                      >
+                        {link.label}
+                      </DropdownMenuItem>
+                    )
+                  )}
                 </DropdownMenuContent>
               </DropdownMenu>
 
@@ -123,9 +160,9 @@ export function Navbar() {
                 className="hidden md:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                data-testid="link-nav-hire"
+                data-testid="link-nav-contact-me"
               >
-                Hire Me
+                Contact Me
               </motion.a>
 
               <button
@@ -154,17 +191,29 @@ export function Navbar() {
               <div className="px-4 py-2 text-xs font-semibold tracking-widest text-muted-foreground uppercase">
                 About
               </div>
-              {aboutLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-                  className="px-6 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
-                  data-testid={`link-mobile-about-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {aboutLinks.map((link) =>
+                link.isRoute ? (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="px-6 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
+                    data-testid={`link-mobile-about-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
+                    className="px-6 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
+                    data-testid={`link-mobile-about-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+                  >
+                    {link.label}
+                  </a>
+                )
+              )}
               <div className="h-px bg-border my-2" />
               {navLinks.map((link) => (
                 <a
@@ -181,9 +230,9 @@ export function Navbar() {
                 href="#contact"
                 onClick={(e) => { e.preventDefault(); scrollTo("#contact"); }}
                 className="mt-2 px-4 py-3 text-sm text-primary-foreground bg-primary rounded-lg text-center font-medium"
-                data-testid="link-mobile-hire"
+                data-testid="link-mobile-contact-me"
               >
-                Hire Me
+                Contact Me
               </a>
             </nav>
           </motion.div>

@@ -3,7 +3,7 @@ import { motion, useInView, type Variants } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Mail, MapPin, Github, Linkedin, Send, Download, CheckCircle } from "lucide-react";
+import { Mail, MapPin, Github, Linkedin, Send, Download, CheckCircle, MessageCircle } from "lucide-react";
 import { useState } from "react";
 
 const schema = z.object({
@@ -73,6 +73,7 @@ export function Contact() {
               <div className="space-y-4">
                 {[
                   { icon: Mail, label: "Email", value: "rahmanadnan412@gmail.com", href: "mailto:rahmanadnan412@gmail.com" },
+                  { icon: MessageCircle, label: "WhatsApp", value: "+91 78580 62571", href: "https://wa.me/917858062571" },
                   { icon: MapPin, label: "Location", value: "Bihar, India", href: null },
                 ].map(({ icon: Icon, label, value, href }) => (
                   <div key={label} className="flex items-center gap-3" data-testid={`contact-info-${label.toLowerCase()}`}>
@@ -115,6 +116,23 @@ export function Contact() {
                 ))}
               </div>
             </div>
+
+            <motion.a
+              href="https://wa.me/917858062571"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 p-4 rounded-2xl border border-green-500/30 bg-green-500/10 hover:bg-green-500/15 transition-all group"
+              whileHover={{ y: -3 }}
+              data-testid="button-contact-whatsapp"
+            >
+              <div className="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center group-hover:bg-green-500/30 transition-colors">
+                <MessageCircle className="w-4 h-4 text-green-500" />
+              </div>
+              <div>
+                <div className="text-sm font-semibold">Chat on WhatsApp</div>
+                <div className="text-xs text-muted-foreground">Usually replies within a day</div>
+              </div>
+            </motion.a>
 
             <motion.a
               href="/resume.pdf"

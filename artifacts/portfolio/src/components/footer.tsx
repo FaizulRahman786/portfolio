@@ -1,17 +1,28 @@
 import { motion } from "framer-motion";
-import { Code2, Github, Linkedin, Mail, Heart } from "lucide-react";
+import { Link, useLocation } from "wouter";
+import { Github, Linkedin, Mail, MessageCircle, Heart } from "lucide-react";
+import profileImage from "@assets/profile-faizul.png";
 
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Blog", href: "/blog", isRoute: true },
   { label: "Contact", href: "#contact" },
 ];
 
 export function Footer() {
+  const [location, navigate] = useLocation();
+
   const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (location === "/") {
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+      }, 300);
+    }
   };
 
   return (
@@ -25,28 +36,44 @@ export function Footer() {
             whileHover={{ scale: 1.05 }}
             data-testid="link-footer-logo"
           >
-            <Code2 className="w-5 h-5" />
+            <img
+              src={profileImage}
+              alt="Faizul Rahman"
+              className="w-7 h-7 rounded-lg object-cover border border-primary/40"
+            />
             <span>Faizul Rahman</span>
           </motion.a>
 
           <nav className="flex items-center gap-1 flex-wrap justify-center" aria-label="Footer navigation">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-                className="px-3 py-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                data-testid={`link-footer-${link.label.toLowerCase()}`}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.isRoute ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="px-3 py-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  data-testid={`link-footer-${link.label.toLowerCase()}`}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
+                  className="px-3 py-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  data-testid={`link-footer-${link.label.toLowerCase()}`}
+                >
+                  {link.label}
+                </a>
+              )
+            )}
           </nav>
 
           <div className="flex items-center gap-3">
             {[
               { icon: Github, href: "https://github.com/FaizulRahman786", label: "GitHub" },
               { icon: Linkedin, href: "https://linkedin.com/in/faizul-rahman-87974b397", label: "LinkedIn" },
+              { icon: MessageCircle, href: "https://wa.me/917858062571", label: "WhatsApp" },
               { icon: Mail, href: "mailto:rahmanadnan412@gmail.com", label: "Email" },
             ].map(({ icon: Icon, href, label }) => (
               <motion.a
