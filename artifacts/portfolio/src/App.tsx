@@ -76,7 +76,7 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="dark" storageKey="faizul-portfolio-theme">
+      <ThemeProvider defaultTheme="light" storageKey="faizul-portfolio-theme">
         <TooltipProvider>
           <SmoothScrolling>
             <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
