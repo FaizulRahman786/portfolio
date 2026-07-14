@@ -29,10 +29,10 @@ export const brand = {
     "As a freelance developer and consultant, I own the entire product lifecycle — from initial database schema design and secure authentication, to optimized cloud deployments and measurable performance benchmarks.",
   ],
 
-  /** Availability status */
+  /** AI Mission status */
   availability: {
     open: true,
-    label: "Available for contracts",
+    label: "🤖 Integrating AI into Modern Products",
     startDate: "Q3 2026",
     responseTime: "< 24 hours",
   },

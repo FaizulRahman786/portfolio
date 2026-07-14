@@ -13,7 +13,7 @@ const terminalLines = [
   { text: "echo $STACK", isOutput: false },
   { text: "React · TypeScript · Node.js · PostgreSQL · Python", isOutput: true },
   { text: "echo $STATUS", isOutput: false },
-  { text: "✓  Open to freelance contracts — Q3 2026", isOutput: true, accent: true },
+  { text: "✓  Integrating AI into Modern Products", isOutput: true, accent: true },
 ];
 
 function Terminal() {

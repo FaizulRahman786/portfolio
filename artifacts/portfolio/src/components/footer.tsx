@@ -76,7 +76,7 @@ export function Footer() {
             </p>
 
             <span className="badge-status-available" data-testid="badge-footer-availability">
-              Available for contracts — {brand.availability.startDate}
+              {brand.availability.label}
             </span>
 
             {/* Social icons */}

@@ -187,14 +187,14 @@ export function Hero() {
         initial="hidden"
         animate="show"
       >
-        {/* Availability badge */}
+        {/* AI Mission badge */}
         <motion.div variants={item} className="flex justify-center mb-8">
           <span
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green-500/25 bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-medium"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/20 dark:border-amber-500/25 bg-emerald-500/5 dark:bg-amber-500/5 text-emerald-700 dark:text-amber-400 text-xs font-semibold tracking-wide backdrop-blur-md shadow-[0_0_15px_rgba(16,185,129,0.1)] dark:shadow-[0_0_15px_rgba(245,158,11,0.2)] hover:border-emerald-500/40 dark:hover:border-amber-500/45 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] dark:hover:shadow-[0_0_20px_rgba(245,158,11,0.35)] transition-all duration-300"
             data-testid="badge-availability"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse flex-shrink-0" aria-hidden="true" />
-            Available for contracts — Q3 2026
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-amber-500 animate-pulse flex-shrink-0" aria-hidden="true" />
+            {brand.availability.label}
           </span>
         </motion.div>
 

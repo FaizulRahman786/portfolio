@@ -5,7 +5,7 @@ import {
   SiVercel, SiFirebase,
 } from "react-icons/si";
 import { brand } from "@/data/brand";
-import { Star, GitFork, Github, ExternalLink, CalendarDays } from "lucide-react";
+import { Star, GitFork, Github, ExternalLink, Sparkles } from "lucide-react";
 
 const techStack = [
   { icon: SiReact, name: "React", color: "#61DAFB" },
@@ -86,7 +86,7 @@ export function TrustBar() {
             ))}
           </motion.div>
 
-          {/* Availability */}
+          {/* AI Mission */}
           <motion.div
             initial={{ opacity: 0, x: 16 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -94,8 +94,8 @@ export function TrustBar() {
             className="flex items-center gap-3 flex-shrink-0"
           >
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              <CalendarDays className="w-3.5 h-3.5 text-green-500" aria-hidden="true" />
-              <span className="text-green-600 dark:text-green-400 font-medium">Available — Q3 2026</span>
+              <Sparkles className="w-3.5 h-3.5 text-emerald-500 dark:text-amber-500 animate-pulse" aria-hidden="true" />
+              <span className="text-emerald-600 dark:text-amber-400 font-semibold">{brand.availability.label}</span>
             </div>
             <a
               href={brand.contact.calendly}

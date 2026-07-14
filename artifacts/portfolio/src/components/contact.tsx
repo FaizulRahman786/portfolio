@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Mail, MapPin, Github, Linkedin, Send, Download, CheckCircle, MessageCircle, Calendar } from "lucide-react";
+import { brand } from "@/data/brand";
 
 const schema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -181,14 +182,14 @@ export function Contact() {
               </div>
             </motion.a>
 
-            {/* Live Availability Status */}
+            {/* AI Mission Status */}
             <div className="p-4 rounded-2xl bg-card border border-border">
               <div className="flex items-center gap-2 mb-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-xs font-bold text-emerald-500 uppercase tracking-wider">Active Availability</span>
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 dark:bg-amber-500 animate-pulse" />
+                <span className="text-xs font-bold text-emerald-500 dark:text-amber-500 uppercase tracking-wider">AI Mission</span>
               </div>
               <p className="text-xs text-muted-foreground leading-normal">
-                Currently accepting freelance contracts starting August 2026. General email response latency is under 12 hours.
+                {brand.availability.label}. General email response latency is under 12 hours.
               </p>
             </div>
           </motion.div>
