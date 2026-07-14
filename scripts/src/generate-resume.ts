@@ -73,7 +73,7 @@ doc
 // Experience
 heading("Experience");
 doc.font("Helvetica-Bold").fontSize(10).fillColor(DARK).text("Independent Full Stack Developer — Freelance", { continued: true });
-doc.font("Helvetica").fontSize(9.5).fillColor(GREY).text("   ·   August 2025 – Present", { align: "left" });
+doc.font("Helvetica").fontSize(9.5).fillColor(GREY).text("   ·   March 2026 – Present", { align: "left" });
 bullet("Design and build scalable SaaS platforms end-to-end, from database schema to deployment.");
 bullet("Develop production React applications, REST APIs, authentication, and role-based dashboards.");
 bullet("Own the full lifecycle: client discovery, UX design, backend architecture, and cloud deployment.");
@@ -83,18 +83,18 @@ heading("Featured Projects");
 
 const projects: { title: string; meta: string; tech: string; points: string[] }[] = [
   {
-    title: "MB Career Connect — Career Development SaaS Platform (Flagship, Ongoing)",
-    meta: "mb-career-connect.vercel.app  ·  github.com/FaizulRahman786/mb-carrer-connection",
-    tech: "React, TypeScript, Node.js, Express, Firebase, Firestore, Cloudinary, Cloudflare, Razorpay",
+    title: "MB Career Connection — Career Development SaaS Platform (Flagship)",
+    meta: "restaurantadvitisment.vercel.app  ·  github.com/FaizulRahman786/MB",
+    tech: "React.js, TypeScript, Node.js, Express.js, Firebase, Cloudinary, Cloudflare, Razorpay, Vite",
     points: [
       "Full-stack ecosystem connecting students, mentors, recruiters, and alumni with role-based dashboards.",
       "Built career guidance, mentorship, job/internship portal, scholarships, hackathons, and payments.",
     ],
   },
   {
-    title: "Anamika SaaS — Restaurant & Sweet Shop Platform",
+    title: "Anamika SaaS Platform — Restaurant & Sweet Shop Platform",
     meta: "restaurantadvitisment.vercel.app  ·  github.com/FaizulRahman786/restaurantadvitisment",
-    tech: "React, TypeScript, Node.js, Firebase, Cloudinary, Cloudflare, Clerk",
+    tech: "React.js, TypeScript, Node.js, Express.js, Firebase, Cloudinary, Cloudflare, Razorpay, Vite",
     points: [
       "Multi-tenant restaurant management SaaS with admin dashboard, RBAC, and table booking.",
       "Implemented authentication, SEO-optimized responsive UI, and production deployment.",
@@ -143,11 +143,17 @@ for (const [label, val] of skillLines) {
 // Education
 heading("Education");
 doc.font("Helvetica-Bold").fontSize(9.8).fillColor(DARK).text("B.Tech, Computer Science & Engineering (AI & ML)");
-doc.font("Helvetica").fontSize(9).fillColor(GREY).text("Lovely Professional University   ·   CGPA: 8.3   ·   Expected Graduation: 2029");
+doc.font("Helvetica").fontSize(9).fillColor(GREY).text("Lovely Professional University   ·   CGPA: 8.1   ·   2025 – 2029");
+doc.moveDown(0.2);
+doc.font("Helvetica-Bold").fontSize(9.8).fillColor(DARK).text("High School (12th Grade – Science)");
+doc.font("Helvetica").fontSize(9).fillColor(GREY).text("High School, Fatuha   ·   Percentage: 80%   ·   2023 – 2025");
+doc.moveDown(0.2);
+doc.font("Helvetica-Bold").fontSize(9.8).fillColor(DARK).text("Secondary School Education (10th Grade)");
+doc.font("Helvetica").fontSize(9).fillColor(GREY).text("Infant Jesus, Baktiyarpur   ·   Percentage: 90.6%   ·   Completed: 2023");
 
 // Certifications
 heading("Certifications");
-bullet("Leadership Fundamentals — EduTech Hub (October 2025)");
+bullet("Leadership Fundamentals — EduTech Hub (November 2025)");
 
 // Soft skills / languages
 heading("Soft Skills & Languages");

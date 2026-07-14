@@ -8,12 +8,12 @@ const fadeUp: Variants = {
 };
 
 const timeline = [
-  { year: "2023", label: "Full-Stack Web Foundations", desc: "Engineered responsive layouts and interactive scripts using vanilla web technologies." },
-  { year: "2024", label: "Component-Driven Frontend Architectures", desc: "Adopted React and TypeScript; designed modular UI systems for local business platforms." },
-  { year: "2024", label: "Backend Engineering & Schema Design", desc: "Designed relational and document database pipelines using Node.js, Express, and MongoDB." },
-  { year: "Aug 2025", label: "Began Freelance SaaS Consulting", desc: "Partnered directly with startup founders to engineer and deploy custom full-stack SaaS applications." },
-  { year: "Late 2025", label: "AI & ML System Specialization", desc: "Integrated intelligent models (e.g. vision pipelines, recommendation algorithms) into client applications." },
-  { year: "Present", label: "SaaS Scale & API Latency Optimization", desc: "Refactoring legacy client backends for concurrency and optimizing page speed indices." },
+  { year: "Aug 2025", label: "Frontend Development Foundations", desc: "Started learning Frontend Development. Focused on HTML, CSS, JavaScript, responsive design, Git, and building static websites." },
+  { year: "Dec 2025", label: "MERN Stack Full Stack Transition", desc: "Transitioned into Full Stack Development. Learned the MERN Stack (MongoDB, Express.js, React.js, Node.js) and started building complete web applications." },
+  { year: "Mar 2026", label: "Began Freelancing Journey", desc: "Started freelancing. Worked with clients, developed production-ready applications, improved communication skills, and learned real-world software development workflows." },
+  { year: "May 2026", label: "Delivered First SaaS Product", desc: "Successfully delivered first SaaS application. Designed, developed, tested, and deployed a complete SaaS product for a real client using modern web technologies." },
+  { year: "Jun 2026", label: "Machine Learning & AI Specialization", desc: "Started learning Machine Learning and Artificial Intelligence. Shifted focus toward AI/ML while continuing full-stack development, exploring data science, neural networks, and model development." },
+  { year: "Aug 2026", label: "Data Structures & Algorithms (DSA)", desc: "Started learning Data Structures and Algorithms (DSA). Focused on problem solving, algorithmic thinking, optimization, and interview preparation." },
 ];
 
 export function Experience() {
@@ -62,7 +62,7 @@ export function Experience() {
                   </h3>
                 </div>
                 <p className="text-sm text-primary font-medium mb-1">Freelance Software Consultant</p>
-                <p className="text-xs font-mono text-muted-foreground mb-6">August 2025 – Present</p>
+                <p className="text-xs font-mono text-muted-foreground mb-6">March 2026 – Present</p>
                 
                 {/* Measurable Google XYZ Achievements */}
                 <ul className="space-y-4">
