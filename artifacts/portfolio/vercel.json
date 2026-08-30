@@ -1,4 +1,7 @@
 {
+  "framework": "vite",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "pnpm --filter @workspace/portfolio run build",
   "outputDirectory": "dist",
   "rewrites": [
     { "source": "/((?!assets/|favicon.svg|robots.txt|sitemap.xml|resume.pdf|opengraph.jpg).*)", "destination": "/index.html" }
